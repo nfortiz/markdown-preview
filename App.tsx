@@ -8,6 +8,27 @@ const App: React.FunctionComponent = () => {
   const [markdown, setMarkdown] = React.useState('# Hello world \n');
 
   React.useEffect(() => {
+    function onResize(x){
+      if(output.current && x.matches){
+
+        console.log('The screen has <600px width');
+
+      } else {
+        console.log('The screen has >600px width');
+      }
+    }
+
+    const matchWindow = window.matchMedia('(max-width: 600px)');
+    onResize(matchWindow);
+    matchWindow.addListener(onResize);
+
+    return () => {
+      matchWindow.removeListener(onResize);
+    };
+
+  }, []);
+
+  React.useEffect(() => {
     const htmlOutput = marked(markdown);
     if (output.current) {
       output.current.innerHTML = htmlOutput;

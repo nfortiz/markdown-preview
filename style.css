@@ -58,7 +58,7 @@ input {
 .header .sign {
   color: var(--light-gray);
   background-color: var(--dark-blue);
-  padding: 15px;
+  padding: 10px 15px;
   margin-right: 10px;
   font-weight: bold;
   position: absolute;
