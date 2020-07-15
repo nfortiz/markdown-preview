@@ -1,9 +1,11 @@
 import React from 'react';
 import marked from 'marked';
 
+import Header from './components/Header';
+
 const App: React.FunctionComponent = () => {
   const output = React.useRef(null);
-  const [markdown, setMarkdown] = React.useState('');
+  const [markdown, setMarkdown] = React.useState('# Hello world \n');
 
   React.useEffect(() => {
     const htmlOutput = marked(markdown);
@@ -16,12 +18,17 @@ const App: React.FunctionComponent = () => {
     setMarkdown(e.target.value)
   }
   return (
-    <main>
+    <div><Header />
+    <main className='content'>
       <textarea
+        className='user-input'
         value={markdown}
         onChange={onChange}></textarea>
-        <div ref={output}></div>
+        <div 
+        ref={output}
+        className='html-output'></div>
     </main>
+    </div>
   );
 };
 
