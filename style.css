@@ -34,7 +34,7 @@ h3,
 h4, 
 h5, 
 h6, 
-p, span, a,
+p, span, a, li, ol,
 textarea, 
 input {
   font-family: var(--font-family);
@@ -48,6 +48,7 @@ input {
   position: relative;
   display: flex;
   justify-content: center;
+  z-index: 101;
 }
 
 .header h1 {
@@ -70,6 +71,8 @@ input {
   height: calc(100vh - var(--header-height));
   width: 100vw;
   display: flex;
+  position: relative;
+
 }
 
 .content > * {
@@ -89,4 +92,45 @@ input {
   border-left: 10px solid var(--gray);
   background: var(--light-gray);
   overflow-y: scroll;
+}
+
+.buttons {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    display: block;
+  }
+
+  .header .sign {
+    padding: 5px 10px;
+  }
+
+  .buttons {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 50px solid rgba(0,0,0,.075);
+    border-left: 50px solid transparent;
+  }
+
+  .button {
+    width: 25px;
+    height: 25px;
+    color: var(--gray);
+    position: absolute;
+    top: -40px;
+    right: 10px;
+  }
+  .active-panel {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+  }
 }
